@@ -8,7 +8,7 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
-import Counter from "./app/Counter";
+import Todo from "./app/Todo";
 
 type Props = {};
 export default class App extends Component<Props> {
@@ -17,7 +17,7 @@ export default class App extends Component<Props> {
       <View style={styles.container}>
         <Text style={styles.welcome}>Welcome to React Native!</Text>
         <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Counter/>
+        <Todo/>
       </View>
     );
   }

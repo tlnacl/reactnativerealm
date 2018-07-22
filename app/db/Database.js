@@ -1,4 +1,3 @@
-import { Config } from './config';
 import Realm from 'realm';
 
 const TaskSchema = {
@@ -10,7 +9,6 @@ const TaskSchema = {
     done: 'bool'
   }
 };
-
 
 export default class Database {
 
