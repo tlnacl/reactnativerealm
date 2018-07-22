@@ -22,8 +22,8 @@ class Todo extends Component {
     }
   }
 
-  add(task) {
-    this.realm.write(() => {
+  async add(task) {
+    await this.realm.write(() => {
       const task = this.realm.create('Task', {
         id: uuid.v4(),
         task,
@@ -47,17 +47,11 @@ class Todo extends Component {
                   onDelete={this.onDelete}
               />}
           />
-            <Button onPress={add('Test')} title='Add'/>
+            <Button onPress={() => this.add('Test')} title='Add'/>
         </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  info:{
-    fontSize: 22,
-  }
-});
 
 export default Todo;
 
