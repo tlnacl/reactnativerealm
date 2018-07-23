@@ -1,24 +1,10 @@
 import React, { Component } from 'react';
-import {Text, View, TouchableHighlight, Button} from 'react-native';
+import {Text, View, Button, FlatList} from 'react-native';
 import TodoModel from './TodoModel';
-import OmniBox from './OmniBox';
-import SortableListView from 'react-native-sortable-listview';
-import ListViewItem from './ListViewItem';
-import Utils from './Utils';
 import TodoService from './TodoService';
 import uuid from 'react-native-uuid'
 
 let dataList = TodoService.findAll();
-var dataListOrder = getOrder(dataList);
-
-function getOrder(list) {
-  return Object.keys(list);
-}
-
-function moveOrderItem(listView, fromIndex, toIndex) {
-  Utils.move(dataListOrder, parseInt(fromIndex), parseInt(toIndex));
-  if (listView.forceUpdate) listView.forceUpdate();
-}
 
 class ListView extends Component {
   constructor() {
@@ -30,7 +16,6 @@ class ListView extends Component {
     };
   }
   updateDataList(dataList) {
-    dataListOrder = getOrder(dataList);
     this.setState({
       dataList: dataList
     });
@@ -47,18 +32,11 @@ class ListView extends Component {
     let listView = <View />;
     if (this.state.dataList.length) {
       listView = (
-        <SortableListView
+        <FlatList
           ref="listView"
           style={{ flex: 1 }}
           data={this.state.dataList}
-          order={dataListOrder}
-          onRowMoved={e => moveOrderItem(this, e.from, e.to)}
-          renderRow={(dataItem, section, index) => (
-            <ListViewItem
-              data={dataItem}
-              onCompletedChange={this._onCompletedChange}
-            />
-          )}
+          renderItem = {({item}) => <Text>{item.title}</Text>}
         />
       );
     }
