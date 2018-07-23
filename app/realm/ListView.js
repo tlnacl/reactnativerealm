@@ -4,20 +4,24 @@ import TodoModel from './TodoModel';
 import TodoService from './TodoService';
 import uuid from 'react-native-uuid'
 
-let dataList = TodoService.findAll();
-
 class ListView extends Component {
   constructor() {
     super();
     this.updateDataList = this.updateDataList.bind(this);
+    this.addTodo = this.addTodo.bind(this);
     this._onCompletedChange = this._onCompletedChange.bind(this);
     this.state = {
-      dataList: dataList
+      dataList: []
     };
   }
-  updateDataList(dataList) {
+
+  componentDidMount(){
+    this.updateDataList();
+  }
+
+  updateDataList() {
     this.setState({
-      dataList: dataList
+      dataList: TodoService.findAll()
     });
   }
   _onCompletedChange() {
@@ -26,6 +30,7 @@ class ListView extends Component {
 
   addTodo(){
     TodoService.save(new TodoModel(uuid.v4()));
+    this.updateDataList();
   }
 
   render() {
