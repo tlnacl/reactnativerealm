@@ -1,57 +1,69 @@
-import React, {Component} from 'react'
-import {View, Button, FlatList} from 'react-native'
-import uuid from 'react-native-uuid';
-import TodoItem from './TodoItem';
-import Database from './db/Database';
+import React, { Component } from 'react';
+import { Text, View, TouchableHighlight, FlatList } from 'react-native';
+import TodoModel from './TodoModel';
+import OmniBox from './OmniBox';
+import ListViewItem from './ListViewItem';
+import Utils from './Utils';
+import TodoService from './TodoService';
 
-class Todo extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {tasks:[]};
-    this.realm = null;
+let dataList = TodoService.findAll();
+var dataListOrder = getOrder(dataList);
+
+function getOrder(list) {
+  return Object.keys(list);
+}
+
+function moveOrderItem(listView, fromIndex, toIndex) {
+  Utils.move(dataListOrder, parseInt(fromIndex), parseInt(toIndex));
+  if (listView.forceUpdate) listView.forceUpdate();
+}
+
+class ListView extends Component {
+  constructor() {
+    super();
+    this.updateDataList = this.updateDataList.bind(this);
+    this._onCompletedChange = this._onCompletedChange.bind(this);
+    this.state = {
+      dataList: dataList
+    };
   }
-
-  async componentDidMount() {
-    await this.init();
-    this.state.tasks = await this.realm.objects('Task');
+  updateDataList(dataList) {
+    dataListOrder = getOrder(dataList);
+    this.setState({
+      dataList: dataList
+    });
   }
-
-  async init() {
-    if (this.realm === null) {
-      this.realm = await Database.getRealmInstance();
-    }
+  _onCompletedChange() {
+    if (this.forceUpdate) this.forceUpdate();
   }
-
-  async add(task) {
-    await this.realm.write(() => {
-      const task = this.realm.create('Task', {
-        id: uuid.v4(),
-        task,
-        done:false
-      })
-    })
-  }
-
-  onDelete(todo) {
-
-  }
-
   render() {
-    return (
-        <View>
+    let listView = <View />;
+    if (this.state.dataList.length) {
+      listView = (
           <FlatList
-              data={this.state.tasks}
-              renderItem={({item}) => <TodoItem
-                  todo={item}
-                  key={item.id}
-                  onDelete={this.onDelete}
-              />}
+              ref="listView"
+              style={{ flex: 1 }}
+              data={this.state.dataList}
+              renderRow={(dataItem) => (
+                  <ListViewItem
+                      data={dataItem}
+                      onCompletedChange={this._onCompletedChange}
+                  />
+              )}
           />
-            <Button onPress={() => this.add('Test')} title='Add'/>
+      );
+    }
+
+    return (
+        <View style={{ flex: 1, marginLeft: 10, marginRight: 10 }}>
+          <OmniBox
+              data={Array.from(dataList)}
+              updateDataList={this.updateDataList}
+          />
+          {listView}
         </View>
     );
   }
 }
 
-export default Todo;
-
+export default ListView;
