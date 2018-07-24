@@ -41,7 +41,7 @@ class ListView extends Component {
           ref="listView"
           style={{ flex: 1 }}
           data={this.state.dataList}
-          renderItem = {({item}) => <Text>{item.title}</Text>}
+          renderItem = {({item}) => <Text>{item.name}</Text>}
         />
       );
     }

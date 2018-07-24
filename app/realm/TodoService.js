@@ -5,10 +5,10 @@ const repository = new Realm({
   schema: [
     {
       name: 'Todo',
-      primaryKey: 'id',
+      primaryKey: '_id',
       properties: {
-        id: { type: 'string', indexed: true },
-        title: 'string',
+        _id: { type: 'string', indexed: true },
+        name: 'string',
         completed: 'bool',
         createdAt: 'date',
         updatedAt: 'date'
@@ -24,7 +24,7 @@ const TodoService = {
   },
   save: function(todo) {
     if (
-      repository.objects('Todo').filtered("title = '" + todo.title + "'").length
+      repository.objects('Todo').filtered("name = '" + todo.name + "'").length
     )
       return;
     repository.write(() => {
