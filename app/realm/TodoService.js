@@ -27,9 +27,8 @@ const TodoService = {
     });
   },
   upsert: function(todo) {
-    console.log(`upsert todo: ${todo}`);
     repository.write(() => {
-      repository.create('Todo', todo);
+      repository.create('Todo', todo, true);
     });
   },
   update: function(todo, callback) {

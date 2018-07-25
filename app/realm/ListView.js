@@ -42,7 +42,7 @@ class ListView extends Component {
   async componentDidMount(){
     await TodoApi.getTasks();
     this.updateDataList();
-    BackgroundTask.schedule();
+    BackgroundTask.schedule({period : 10});
     await this.checkStatus();
   }
 
