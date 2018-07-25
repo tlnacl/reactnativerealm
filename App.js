@@ -9,6 +9,8 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import ListView from "./app/realm/ListView";
+import TodoService from "./app/realm/TodoService";
+import TodoModel from "./app/realm/TodoModel";
 
 type Props = {};
 export default class App extends Component<Props> {

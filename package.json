@@ -9,6 +9,8 @@
   "dependencies": {
     "react": "16.4.1",
     "react-native": "0.56.0",
+    "react-native-background-fetch": "^2.0.8",
+    "react-native-background-task": "github:tlnacl/react-native-background-task#master",
     "react-native-sortable-listview": "^0.2.8",
     "react-native-uuid": "^1.4.9",
     "realm": "^2.13.0"
