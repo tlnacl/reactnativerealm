@@ -21,6 +21,7 @@ const TodoService = {
     return repository.objects('Todo');
   },
   save: function(todo) {
+    console.log(`save todo: ${todo.name}`);
     repository.write(() => {
       todo.updatedAt = new Date();
       repository.create('Todo', todo);
