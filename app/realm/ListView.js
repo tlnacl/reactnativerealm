@@ -4,8 +4,22 @@ import TodoModel from './TodoModel';
 import TodoService from './TodoService';
 import uuid from 'react-native-uuid'
 import TodoApi from "../api/TodoApi";
+import BackgroundTask from '../background-task'
 
-import BackgroundTask from 'react-native-background-task'
+BackgroundTask.define(
+    async () => {
+      console.log('Hello from a background task')
+
+      TodoService.save(new TodoModel(`background Task ${new Date()}`));
+
+      // Or, instead of just setting a timestamp, do an http request
+      /* const response = await fetch('http://worldclockapi.com/api/json/utc/now')
+      const text = await response.text()
+      await AsyncStorage.setItem('@MySuperStore:times', text) */
+
+      BackgroundTask.finish()
+    },
+);
 
 class ListView extends Component {
   constructor() {
@@ -21,6 +35,13 @@ class ListView extends Component {
   async componentDidMount(){
     await TodoApi.getTasks();
     this.updateDataList();
+    BackgroundTask.schedule();
+    await this.checkStatus();
+  }
+
+  async checkStatus() {
+    const status = await BackgroundTask.statusAsync();
+    console.log('BackgroundTask status:' + status.available);
   }
 
   updateDataList() {
