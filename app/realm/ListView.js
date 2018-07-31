@@ -33,7 +33,7 @@ class ListView extends Component {
   }
 
   async componentDidMount(){
-    await TodoApi.getTasks();
+    await to(TodoApi.getTasks());
     this.updateDataList();
     BackgroundTask.schedule();
     await this.checkStatus();
@@ -43,6 +43,7 @@ class ListView extends Component {
     const status = await BackgroundTask.statusAsync();
     console.log('BackgroundTask status:' + status.available);
   }
+
 
   updateDataList() {
     this.setState({
