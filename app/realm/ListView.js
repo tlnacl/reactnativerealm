@@ -4,6 +4,7 @@ import TodoModel from './TodoModel';
 import TodoService from './TodoService';
 import uuid from 'react-native-uuid'
 import TodoApi from "../api/TodoApi";
+import to from '../Utils';
 
 import BackgroundTask from 'react-native-background-task'
 
@@ -40,9 +41,10 @@ class ListView extends Component {
   }
 
   async componentDidMount(){
-    await TodoApi.getTasks();
+    await to(TodoApi.getTasks());
     this.updateDataList();
-    BackgroundTask.schedule({period : 10});
+    console.log('start schedule');
+    BackgroundTask.schedule();
     await this.checkStatus();
   }
 
