@@ -15,17 +15,31 @@ const BackgroundTask: BackgroundTaskInterface = {
 
   schedule: function(options = {}) {
     // Cancel existing tasks
-    BackgroundFetch.stop()
+    BackgroundFetch.stop();
 
     // Configure the native module
     // Automatically calls RNBackgroundFetch#start
-    BackgroundFetch.configure(
-      { stopOnTerminate: false },
-      this._definition,
-      () => {
-        console.warn(`Background Fetch failed to start`)
-      }
-    )
+      BackgroundFetch.configure({
+        minimumFetchInterval: 15, // <-- minutes (15 is minimum allowed)
+      }, this._definition,
+          (error) => {
+        console.log("[js] RNBackgroundFetch failed to start");
+      });
+
+      // Optional: Query the authorization status.
+      BackgroundFetch.status((status) => {
+        switch(status) {
+          case BackgroundFetch.STATUS_RESTRICTED:
+            console.log("BackgroundFetch restricted");
+            break;
+          case BackgroundFetch.STATUS_DENIED:
+            console.log("BackgroundFetch denied");
+            break;
+          case BackgroundFetch.STATUS_AVAILABLE:
+            console.log("BackgroundFetch is enabled");
+            break;
+        }
+      });
   },
 
   finish: function() {
