@@ -22,7 +22,7 @@ BackgroundTask.define(
     },
 );
 
-class ListView extends Component {
+class TodoList extends Component {
   constructor() {
     super();
     this.updateDataList = this.updateDataList.bind(this);
@@ -82,4 +82,4 @@ class ListView extends Component {
   }
 }
 
-export default ListView;
+export default TodoList;

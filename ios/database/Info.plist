@@ -35,7 +35,7 @@
 			</dict>
 		</dict>
 	</dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
+	<key>NSLocationAlwaysUsageDescription</key>
 	<string></string>
 	<key>UIBackgroundModes</key>
 	<array>

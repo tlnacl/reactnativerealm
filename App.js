@@ -8,7 +8,7 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
-import ListView from "./app/realm/ListView";
+import TodoList from "./app/realm/TodoList";
 import BackgroundFetch from "react-native-background-fetch";
 import TodoService from "./app/realm/TodoService";
 import TodoModel from "./app/realm/TodoModel";
@@ -50,7 +50,7 @@ export default class App extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
-        <ListView/>
+        <TodoList/>
       </View>
     );
   }
