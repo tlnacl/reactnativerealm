@@ -1,40 +1,24 @@
-import Realm from 'realm';
-
-const repository = new Realm({
-  schema: [
-    {
-      name: 'Todo',
-      primaryKey: '_id',
-      properties: {
-        _id: { type: 'string', indexed: true },
-        name: 'string',
-        completed: 'string',
-        createdAt: 'date',
-        updatedAt: 'date?'
-      }
-    }
-  ]
-});
+import RealmDb from "./RealmDb";
 
 const TodoService = {
   findAll: function() {
-    return repository.objects('Todo');
+    return RealmDb.get().objects('Todo');
   },
   save: function(todo) {
     console.log(`save todo: ${todo.name}`);
-    repository.write(() => {
+    RealmDb.get().write(() => {
       todo.updatedAt = new Date();
-      repository.create('Todo', todo);
+      RealmDb.get().create('Todo', todo);
     });
   },
   upsert: function(todo) {
-    repository.write(() => {
-      repository.create('Todo', todo, true);
+    RealmDb.get().write(() => {
+      RealmDb.get().create('Todo', todo, true);
     });
   },
   update: function(todo, callback) {
     if (!callback) return;
-    repository.write(() => {
+    RealmDb.get().write(() => {
       callback();
       todo.updatedAt = new Date();
     });

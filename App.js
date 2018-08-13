@@ -12,6 +12,7 @@ import TodoList from "./app/realm/TodoList";
 import BackgroundFetch from "react-native-background-fetch";
 import TodoService from "./app/realm/TodoService";
 import TodoModel from "./app/realm/TodoModel";
+import LocationView from "./app/location/LocationView";
 
 type Props = {};
 export default class App extends Component<Props> {
@@ -51,6 +52,7 @@ export default class App extends Component<Props> {
     return (
       <View style={styles.container}>
         <TodoList/>
+        <LocationView/>
       </View>
     );
   }
