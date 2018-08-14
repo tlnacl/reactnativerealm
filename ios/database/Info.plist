@@ -39,6 +39,8 @@
     <string/>
     <key>NSLocationWhenInUseUsageDescription</key>
     <string/>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string/>
     <key>UIBackgroundModes</key>
     <array>
       <string>audio</string>
