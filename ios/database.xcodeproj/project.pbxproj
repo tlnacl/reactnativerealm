@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -45,6 +44,7 @@
 		A485CF8D210993BD00E6C55D /* RNBackgroundFetch+AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A485CF8C210993BD00E6C55D /* RNBackgroundFetch+AppDelegate.m */; };
 		A485CF8E210993BD00E6C55D /* RNBackgroundFetch+AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A485CF8C210993BD00E6C55D /* RNBackgroundFetch+AppDelegate.m */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
+		96875E0560CC439092D3FF0B /* RNBackgroundFetch+AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 75D4027F317545899A26C366 /* RNBackgroundFetch+AppDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -372,6 +372,7 @@
 		A4C7FC65212112BE0075554E /* auckland-to-coromandel.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "auckland-to-coromandel.gpx"; path = "../../../temp/auckland-to-coromandel.gpx"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		B1932BB1A663418B91CEE096 /* RealmReact.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RealmReact.xcodeproj; path = "../node_modules/realm/react-native/ios/RealmReact.xcodeproj"; sourceTree = "<group>"; };
+		75D4027F317545899A26C366 /* RNBackgroundFetch+AppDelegate.m */ = {isa = PBXFileReference; name = "RNBackgroundFetch+AppDelegate.m"; path = "../node_modules/react-native-background-fetch/ios/RNBackgroundFetch/RNBackgroundFetch+AppDelegate.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -524,6 +525,7 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				75D4027F317545899A26C366 /* RNBackgroundFetch+AppDelegate.m */,
 			);
 			name = database;
 			sourceTree = "<group>";
@@ -763,7 +765,7 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
-								enabled = 1;
+								enabled = true;
 							};
 						};
 					};
@@ -1214,6 +1216,7 @@
 				A485CF8E210993BD00E6C55D /* RNBackgroundFetch+AppDelegate.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				96875E0560CC439092D3FF0B /* RNBackgroundFetch+AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1288,6 +1291,9 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/database.app/database";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../node_modules/react-native-background-fetch/ios/**",
+				);
 			};
 			name = Debug;
 		};
@@ -1313,6 +1319,9 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/database.app/database";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../node_modules/react-native-background-fetch/ios/**",
+				);
 			};
 			name = Release;
 		};
@@ -1325,7 +1334,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = NQ2B5M9AY4;
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../node_modules/react-native-background-fetch/ios/**";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../node_modules/react-native-background-fetch/ios/**",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/realm/src/**",
@@ -1353,7 +1364,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NQ2B5M9AY4;
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../node_modules/react-native-background-fetch/ios/**";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../node_modules/react-native-background-fetch/ios/**",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/realm/src/**",
@@ -1404,6 +1417,9 @@
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../node_modules/react-native-background-fetch/ios/**",
+				);
 			};
 			name = Debug;
 		};
@@ -1438,6 +1454,9 @@
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../node_modules/react-native-background-fetch/ios/**",
+				);
 			};
 			name = Release;
 		};
@@ -1471,6 +1490,9 @@
 				SDKROOT = appletvos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/database-tvOS.app/database-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../node_modules/react-native-background-fetch/ios/**",
+				);
 			};
 			name = Debug;
 		};
@@ -1504,6 +1526,9 @@
 				SDKROOT = appletvos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/database-tvOS.app/database-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../node_modules/react-native-background-fetch/ios/**",
+				);
 			};
 			name = Release;
 		};
