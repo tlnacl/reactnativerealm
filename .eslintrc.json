@@ -1,3 +1,42 @@
 {
-    "extends": "airbnb"
+    // https://github.com/airbnb/javascript
+    "extends": "airbnb",
+
+    // 'babel-eslint' mainly for React Native Classes
+    "parser": "babel-eslint",
+    "ecmaFeatures": {
+        "classes": true
+    },
+    "rules": {
+        "react/sort-comp":"off",
+        "react/jsx-closing-bracket-location":"off",
+        "react/jsx-one-expression-per-line":"off",
+        "react/jsx-tag-spacing":"off",
+        "react/jsx-boolean-value":"off",
+        "react/no-array-index-key":"off",
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "react/prefer-stateless-function": [1, { "ignorePureComponents": true }],
+        "react/prop-types": "warn", // todo add our own prop and set to error
+        "react/forbid-prop-types":"off", // todo enforce strict props typing
+        "eol-last": "off",
+        "prefer-destructuring": "off",
+        "arrow-body-style": "off",
+        "no-nested-ternary": "off",
+        "no-unused-expressions": "off",
+        "no-plusplus": "off",
+        "no-param-reassign": "off",
+        "no-mixed-operators": "off",
+        "max-len": ["error", { "code": 160, "comments": 160 }],
+        "padded-blocks": "off",
+        "import/prefer-default-export": "off",
+        "no-unused-vars": "error",
+        "class-methods-use-this": "warn",
+        "no-use-before-define": 0,
+        "no-trailing-spaces": ["warn", { "skipBlankLines": true }],
+        "no-console": "off"
+    },
+    "globals": {
+        "fetch": false,
+        "Headers": false
+    }
 }

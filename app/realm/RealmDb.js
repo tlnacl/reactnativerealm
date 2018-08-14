@@ -8,8 +8,8 @@ const TodoSchema = {
     name: 'string',
     completed: 'string',
     createdAt: 'date',
-    updatedAt: 'date?'
-  }
+    updatedAt: 'date?',
+  },
 };
 
 const LocationSchema = {
@@ -19,19 +19,19 @@ const LocationSchema = {
     name: 'string',
     latitude: 'float',
     longitude: 'float',
-    updatedAt: 'date'
-  }
+    updatedAt: 'date',
+  },
 };
 
 export default class RealmDb {
-  static  realmInstance = null;
+  static realmInstance = null;
 
   static get() {
     if (RealmDb.realmInstance === null) {
       RealmDb.realmInstance = new Realm({
         // path: options.realmPath || Config.REALM_PATH,
         // schemaVersion: Config.REALM_SCHEMA_VERSION,
-        schema: [TodoSchema, LocationSchema]
+        schema: [TodoSchema, LocationSchema],
       });
     }
     return RealmDb.realmInstance;
